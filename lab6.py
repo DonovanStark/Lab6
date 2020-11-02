@@ -25,28 +25,32 @@ def cnvrtdata(point):
     else:
         cur = [x,y,m]
         return cur
-def drawstar(loops,stars):
+def drawstars(loops,stars):
     for i in range(loops):
         turtle.color('white')
         turtle.penup()
         turtle.goto(stars[i][0],stars[i][1])
         turtle.seth(0)
         turtle.pendown()
+        turtle.begin_fill()
         for _ in range(4):
-            turtle.forward(stars[2])
+            turtle.forward(stars[i][2])
             turtle.right(90)
+        turtle.end_fill()
 def connectstars():
     pass
 
 def main():
     turtle.bgcolor('black')
     turtle.screensize(500, 500)
+    turtle.speed(0)
+    turtle.tracer(1,0)
     data = getdata()
     loops = len(data)
     stars = []
     for i in range(len(data)):
         point = data[i].split()
         stars += [cnvrtdata(point)]
-    drawstar(loops,stars)
-
+    drawstars(loops,stars)
+    turtle.exitonclick()
 main()
