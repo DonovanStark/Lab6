@@ -2,6 +2,7 @@
 import turtle
 
 
+# Pulls the data from stars.txt and binds it to "data"
 def getdata():
     data = []
     star_data = open('stars.txt')
@@ -13,6 +14,7 @@ def getdata():
     return data
 
 
+# Converts the data into an easy to use format then returns it
 def cnvrtdata(point):
     x = float(point[0])
     y = float(point[1])
@@ -35,6 +37,7 @@ def cnvrtdata(point):
         return cur
 
 
+# Draws the stars using the converted data
 def drawstars(loops, stars):
     for i in range(loops):
         turtle.color('white')
@@ -49,6 +52,7 @@ def drawstars(loops, stars):
         turtle.end_fill()
 
 
+# Gets the data for all of the constellations
 def getconst(i):
     i = str(i)
     constellations = {
@@ -70,6 +74,7 @@ def getconst(i):
     return cont
 
 
+# Finds the information for star 1 in a constellation
 def mark1(star, stars):
     for i in range(len(stars)):
         if len(stars[i]) > 3:
@@ -80,6 +85,7 @@ def mark1(star, stars):
                     return stars[i]
 
 
+# Finds the information for star 2 in a constellation
 def mark2(star, stars):
     for i in range(len(stars)):
         if len(stars[i]) > 3:
@@ -91,6 +97,7 @@ def mark2(star, stars):
                     return stars[i]
 
 
+# Using the info for star1 and star2 draws the constellation lines
 def drawline(star1, star2):
     turtle.penup()
     turtle.goto(star1[0], star1[1])
